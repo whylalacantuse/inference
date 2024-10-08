@@ -139,6 +139,7 @@ class ModelActor(xo.StatelessActor):
     async def __pre_destroy__(self):
         from ..model.embedding.core import EmbeddingModel
         from ..model.llm.sglang.core import SGLANGModel
+		from ..model.llm.ksanallm.core import KSANAModel
         from ..model.llm.transformers.core import PytorchModel as LLMPytorchModel
         from ..model.llm.vllm.core import VLLMModel as LLMVLLMModel
 
@@ -185,6 +186,7 @@ class ModelActor(xo.StatelessActor):
         super().__init__()
         from ..model.llm.lmdeploy.core import LMDeployModel
         from ..model.llm.sglang.core import SGLANGModel
+		from ..model.llm.ksanallm.core import KSANAModel
         from ..model.llm.transformers.core import PytorchModel
         from ..model.llm.vllm.core import VLLMModel
 
@@ -200,7 +202,7 @@ class ModelActor(xo.StatelessActor):
         self._lock = (
             None
             if isinstance(
-                self._model, (PytorchModel, VLLMModel, SGLANGModel, LMDeployModel)
+                self._model, (PytorchModel, VLLMModel, SGLANGModel, LMDeployModel, KSANAModel)
             )
             else asyncio.locks.Lock()
         )

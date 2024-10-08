@@ -87,3 +87,8 @@ psutil
 aiohttp
 anthropic>=0.20.0
 litellm>=1.0.0
+
+# ksanallm
+rouge_score==0.1.2
+msgpack>=1.0.8
+uvloop>=0.20.0

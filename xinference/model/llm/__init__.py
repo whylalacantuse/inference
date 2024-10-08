@@ -37,6 +37,7 @@ from .llm_family import (
     LMDEPLOY_CLASSES,
     MLX_CLASSES,
     SGLANG_CLASSES,
+	KSANALLM_CLASSES,
     SUPPORTED_ENGINES,
     TRANSFORMERS_CLASSES,
     VLLM_CLASSES,
@@ -132,6 +133,7 @@ def _install():
     from .lmdeploy.core import LMDeployChatModel, LMDeployModel
     from .mlx.core import MLXChatModel, MLXModel
     from .sglang.core import SGLANGChatModel, SGLANGModel
+	from .ksanallm.core import KSANAChatModel, KSANAModel
     from .transformers.chatglm import ChatglmPytorchChatModel
     from .transformers.cogvlm2 import CogVLM2Model
     from .transformers.cogvlm2_video import CogVLM2VideoModel
@@ -167,6 +169,7 @@ def _install():
             LlamaCppModel,
         ]
     )
+	KSANALLM_CLASSES.extend([KSANAModel, KSANAChatModel])
     SGLANG_CLASSES.extend([SGLANGModel, SGLANGChatModel])
     VLLM_CLASSES.extend([VLLMModel, VLLMChatModel, VLLMVisionModel])
     MLX_CLASSES.extend([MLXModel, MLXChatModel])
@@ -202,6 +205,7 @@ def _install():
     SUPPORTED_ENGINES["llama.cpp"] = LLAMA_CLASSES
     SUPPORTED_ENGINES["MLX"] = MLX_CLASSES
     SUPPORTED_ENGINES["LMDEPLOY"] = LMDEPLOY_CLASSES
+    SUPPORTED_ENGINES["KSANALLM"] = KSANALLM_CLASSES
 
     json_path = os.path.join(
         os.path.dirname(os.path.abspath(__file__)), "llm_family.json"
